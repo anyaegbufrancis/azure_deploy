@@ -28,7 +28,8 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      #vmImage: $(vmImageName)
+      vmImage: 'pool'
 
     steps:
     - task: NodeTool@0
