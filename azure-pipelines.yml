@@ -3,6 +3,8 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+name: $(Build.DefinitionNamr)-$(SourceBranchName)-$(Date:yyMMdd)-$(Rev:.r)
+
 trigger:
 - ichie
 
@@ -18,8 +20,8 @@ variables:
   environmentName: 'app01-svc'
 
   # Agent VM image name
-  #vmImageName: 'ubuntu-latest'
-  vmImageName: 'pool'
+  vmImageName: 'ubuntu-latest'
+  poolName: 'pool'
 
 stages:
 - stage: Build
@@ -28,6 +30,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
+      name: $(poolName)
       vmImage: $(vmImageName)
 
     steps:
@@ -63,6 +66,7 @@ stages:
     displayName: Deploy
     environment: $(environmentName)
     pool:
+      name: $(poolName)
       vmImage: $(vmImageName)
     strategy:
       runOnce:
