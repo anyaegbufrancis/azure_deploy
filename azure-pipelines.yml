@@ -18,7 +18,8 @@ variables:
   environmentName: 'app01-svc'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  #vmImageName: 'ubuntu-latest'
+  vmImageName: 'pool'
 
 stages:
 - stage: Build
